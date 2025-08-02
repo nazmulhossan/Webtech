@@ -1,80 +1,103 @@
-<html>
-    <Head>
-        <title>Form</title>
-        <link rel="stylesheet" href="FormStyle.css">
-    </Head>
-    <body>
-        <p>>  1 Donation  >   2 Confirmation   > Thank you!</p>
-        <h1> Donor Information</h1>
-        <form action="/action_page.php">
-            <label for ="fname">First Name*:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Last Name* :</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Company  :</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Adress1*  :</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Adress 2 :</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">City* :</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="State">State*:</label><br>
-            <select id="State" name="State"><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Form</title>
+    <link rel="stylesheet" href="FormStyle.css">
+</head>
+<body>
+
+    <p>&gt; 1 Donation &gt; 2 Confirmation &gt; Thank you!</p>
+    <h1>Donor Information</h1>
+
+    <form action="/action_page.php">
+
+        <fieldset>
+            <legend>Personal Details</legend>
+            <label for="firstName">First Name*:</label><br>
+            <input type="text" id="firstName" name="firstName"><br>
+
+            <label for="lastName">Last Name*:</label><br>
+            <input type="text" id="lastName" name="lastName"><br>
+
+            <label for="company">Company:</label><br>
+            <input type="text" id="company" name="company"><br>
+
+            <label for="address1">Address 1*:</label><br>
+            <input type="text" id="address1" name="address1"><br>
+
+            <label for="address2">Address 2:</label><br>
+            <input type="text" id="address2" name="address2"><br>
+
+            <label for="city">City*:</label><br>
+            <input type="text" id="city" name="city"><br>
+
+            <label for="state">State*:</label><br>
+            <select id="state" name="state">
                 <option value="NY">NY</option>
                 <option value="TS">TS</option>
             </select><br>
-            <label for ="fname">Zipcode*:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="State">Country*:</label><br>
-            <select id="State" name="State"><br>
-                <option value="NY">BGD</option>
-                <option value="TS">IND</option>
+
+            <label for="zipcode">Zip Code*:</label><br>
+            <input type="text" id="zipcode" name="zipcode"><br>
+
+            <label for="country">Country*:</label><br>
+            <select id="country" name="country">
+                <option value="BGD">Bangladesh</option>
+                <option value="IND">India</option>
             </select><br>
-            <label for ="fname">Phone:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Fax:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Email*:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
 
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone"><br>
 
-            <h1>Honourium and Memorial Donation Information</h1>
-            <label for ="fname">Name:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Acknowledge Donation To:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">Address:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="fname">City:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
-            <label for ="State">State*:</label><br>
-           <select id="State" name="State"><br>
+            <label for="fax">Fax:</label><br>
+            <input type="text" id="fax" name="fax"><br>
+
+            <label for="email">Email*:</label><br>
+            <input type="email" id="email" name="email"><br>
+        </fieldset>
+
+        <h1>Honorarium and Memorial Donation Information</h1>
+
+        <fieldset>
+            <legend>Honorarium Details</legend>
+            <label for="honorName">Name:</label><br>
+            <input type="text" id="honorName" name="honorName"><br>
+
+            <label for="acknowledgeTo">Acknowledge Donation To:</label><br>
+            <input type="text" id="acknowledgeTo" name="acknowledgeTo"><br>
+
+            <label for="honorAddress">Address:</label><br>
+            <input type="text" id="honorAddress" name="honorAddress"><br>
+
+            <label for="honorCity">City:</label><br>
+            <input type="text" id="honorCity" name="honorCity"><br>
+
+            <label for="honorState">State:</label><br>
+            <select id="honorState" name="honorState">
                 <option value="NY">NY</option>
                 <option value="TS">TS</option>
             </select><br>
-            <label for ="fname">Zip:</label><br>
-            <input type="text" id="fname" name="fname" ><br>
 
-            <h1>Additional Information</h1>
-            <p>Plese enter your name ,company or organization as you would like it to appear in our publications:</p><br>
-             <label for ="fname">Comments:</label><br>
-             
-            
+            <label for="honorZip">Zip:</label><br>
+            <input type="text" id="honorZip" name="honorZip"><br>
+        </fieldset>
 
-            <textarea name=" message" rows="10" cols="20">(please  type any questions of feedback here)
-            </textarea><br><br>
+        <h1>Additional Information</h1>
 
+        <fieldset>
+            <legend>Comments</legend>
+            <p>Please enter your name, company or organization as you would like it to appear in our publications:</p>
+            <label for="comments">Comments:</label><br>
+            <textarea id="comments" name="comments" rows="5" cols="30">(Please type any questions or feedback here)</textarea><br>
+        </fieldset>
 
-            
+        <div style="margin-top: 20px;">
+            <input type="submit" value="Submit Donation">
+            <input type="reset" value="Reset Form">
+        </div>
 
+    </form>
 
-
-
-            
-            
-
-                
-        </form>
-    </body>
+</body>
 </html>
