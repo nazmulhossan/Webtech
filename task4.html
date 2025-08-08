@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #00bfa6;
+            border-bottom: 2px solid #00bfa6;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        form {
+            max-width: 800px;
+            margin: auto;
+            background: #f0fdfd;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 191, 166, 0.15);
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #00bfa6;
+            border-radius: 8px;
+            background: #fff;
+            color: #111;
+            margin-top: 0.3rem;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            accent-color: #00bfa6;
+            margin-right: 0.5rem;
+            transform: scale(1.1);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 0.7rem 2rem;
+            background: #00bfa6;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            margin-right: 1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background: #00e5ff;
+            transform: scale(1.05);
+        }
+
+        #donationMessage {
+            font-weight: bold;
+            color: #e45d14;
+            margin-top: 0.5rem;
+        }
+
+        span.required {
+            color: red;
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        ::placeholder {
+            color: #888;
+        }
+    </style>
+
+    <script>
+        function thankUser() {
+            alert("Form has been reset. Thank you!");
+        }
+
+        function validateForm() {
+            const form = document.forms[0];
+            const requiredFields = [
+                form["first_name"],
+                form["last_name"],
+                form["address1"],
+                form["city"],
+                form["zip"],
+                form["email"],
+                form["state"],
+                form["country"]
+            ];
+
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {
+                    alert("Please fill in all required fields marked with *.");
+                    return false;
+                }
+            }
+
+            alert("Thank you for your submission!");
+            window.location.href = "thankyou.html";
+            return false;
+        }
+
+        function showDonationMessage(amount) {
+            let message = "";
+            switch (amount) {
+                case "$50":
+                    message = "Thank you for your generous $50 donation!";
+                    break;
+                case "$100":
+                    message = "You're amazing for donating $100!";
+                    break;
+                case "$250":
+                    message = "Wow! $250! Thank you for your kindness!";
+                    break;
+                case "Other":
+                    message = "Please enter your custom amount below.";
+                    break;
+                case "None":
+                    message = "Please consider supporting our cause.";
+                    break;
+                default:
+                    message = "Selected: " + amount;
+            }
+            document.getElementById("donationMessage").innerText = message;
+        }
+
+        const donationOptions = ["None", "$50", "$75", "$100", "$250", "Other"];
+        window.onload = function () {
+            const container = document.getElementById("donationOptions");
+            donationOptions.forEach((amount) => {
+                const label = document.createElement("label");
+                label.style.marginRight = "1.5rem";
+
+                const radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = "donation";
+                radio.value = amount;
+                radio.onclick = () => showDonationMessage(amount);
+
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(" " + amount));
+                container.appendChild(label);
+            });
+        };
+    </script>
+</head>
+<body>
+
+<p><span class="required">*</span> Required fields</p>
+
+<h2>Donor Information</h2>
+
+<form onsubmit="return validateForm()">
+    <p><label>First Name <span class="required">*</span></label>
+        <input type="text" name="first_name"></p>
+
+    <p><label>Last Name <span class="required">*</span></label>
+        <input type="text" name="last_name"></p>
+
+    <p><label>Company</label>
+        <input type="text"></p>
+
+    <p><label>Address 1 <span class="required">*</span></label>
+        <input type="text" name="address1"></p>
+
+    <p><label>Address 2</label>
+        <input type="text"></p>
+
+    <p><label>City <span class="required">*</span></label>
+        <input type="text" name="city"></p>
+
+    <p><label>State <span class="required">*</span></label>
+        <select name="state">
+            <option value="">Select a State</option>
+            <option>Alabama</option>
+            <option>Alaska</option>
+            <option>Arizona</option>
+            <option>California</option>
+            <option>Florida</option>
+            <option>New York</option>
+            <option>Texas</option>
+            <option>Washington</option>
+        </select></p>
+
+    <p><label>Zip Code <span class="required">*</span></label>
+        <input type="text" name="zip"></p>
+
+    <p><label>Country <span class="required">*</span></label>
+        <select name="country">
+            <option value="">Select a Country</option>
+            <option>Bangladesh</option>
+            <option>India</option>
+            <option>Nepal</option>
+            <option>Bhutan</option>
+            <option>Pakistan</option>
+        </select></p>
+
+    <p><label>Phone</label> <input type="text"></p>
+    <p><label>Fax</label> <input type="text"></p>
+    <p><label>Email <span class="required">*</span></label> <input type="email" name="email"></p>
+
+    <p><label>Donation Amount <span class="required">*</span></label><br>
+        <span id="donationOptions"></span>
+        <div id="donationMessage"></div>
+    </p>
+
+    <p><label>Other Amount</label>
+        <input type="text" placeholder="Enter custom amount"></p>
+
+    <p><input type="checkbox"> I am interested in giving on a regular basis.</p>
+
+    
+
+    <h2>Honorarium and Memorial Donation Information</h2>
+
+    <p>I would like to make this donation
+        <input type="radio" name="honor"> To Honor
+        <input type="radio" name="honor"> In Memory of
+    </p>
+
+    <p><label>Name</label> <input type="text"></p>
+    <p><label>Acknowledge Donation to</label> <input type="text"></p>
+    <p><label>Address</label> <input type="text"></p>
+    <p><label>City</label> <input type="text"></p>
+
+    <p><label>State</label>
+        <select name="honor_state">
+            <option value="">Select a State</option>
+            <option>Alabama</option>
+            <option>Alaska</option>
+            <option>Arizona</option>
+            <option>California</option>
+            <option>Florida</option>
+            <option>New York</option>
+            <option>Texas</option>
+            <option>Washington</option>
+        </select>
+    </p>
+
+    <p><label>Zip</label> <input type="text"></p>
+
+    <h2>Additional Information</h2>
+
+    <p><input type="checkbox"> I would like my gift to remain anonymous.</p>
+    <p><input type="checkbox"> My employer offers a matching gift program.</p>
+    <p><input type="checkbox"> Skip thank you letter.</p>
+
+    <p><label>Comments:</label><br>
+        <textarea rows="5" cols="50" placeholder="Drop your thoughts here"></textarea>
+    </p>
+
+    <p><label>How may we contact you:</label><br>
+        <input type="checkbox"> E-mail
+        <input type="checkbox"> Postal Mail
+        <input type="checkbox"> Telephone
+        <input type="checkbox"> Fax
+    </p>
+       <p>Password* <input type="password" name="password" placeholder="Enter a password"></p>
+
+    
+
+    <p>
+        <input type="reset" value="Reset" onclick="thankUser()">
+        <input type="submit" value="Submit">
+    </p>
+</form>
+
+</body>
+</html>
